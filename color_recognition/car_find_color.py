@@ -13,7 +13,7 @@ import color_detect as ct
 SIGHT_PIXEL_COUNT = (config.EYE_SIGHT_HEIGHT * config.EYE_SIGHT_WIDTH) # 像素的个数
 EXPECTED_BLOCK_AREA = 20000
 HALF_WIDTH = config.EYE_SIGHT_WIDTH / 2
-#
+
 # def imgs(path):
 #     path = os.path.expanduser(path)
 #
@@ -126,9 +126,9 @@ class FindBlockTask(t.Task):
             # if the color is found, only track one color in the img
             _, im_object, contours = ct.color_track(im_hsv, self.color)
             print 'color found'
-
+        print len(contours)
         location, area, contours_find = ct.color_location(im_hsv, contours)
-        print len(contours_find)
+
         color_boundary = ct.get_color(contours_find, im_hsv, boundaries_red, boundaries_green, boundaries_blue)
         print 'area is',area
         # find the maximum area in the contours and return the location

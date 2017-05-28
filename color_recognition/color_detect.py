@@ -42,11 +42,11 @@ def find_max_area(contours):
 
     area_list = np.zeros(len(contours))
     i = 0
+    if len(contours) > 0:
+        for cnt in contours:
+            area_list[i] = cv2.contourArea(cnt)
+            i = i + 1
 
-    for cnt in contours:
-        area_list[i] = cv2.contourArea(cnt)
-        i = i + 1
-    if len(area_list) > 0:
         max_ind = np.argmax(area_list)
         max_area = area_list[max_ind]
 
